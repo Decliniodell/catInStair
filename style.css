@@ -1,0 +1,119 @@
+html, body {
+  margin: 0px;
+  overflow: hidden;
+  background-color: #d3d1cb;
+}
+
+#screen1, #screen2 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: absolute;
+  align-content: center;
+}
+
+#inputbuttons, #bottomInputbuttons {
+  width: 200px;
+  display: flex;
+  margin: 0 auto;
+  padding-top: 40px;
+  justify-content: space-evenly;
+}
+
+#bottomInputbuttons {
+  width: 100%;
+  bottom: 40px;
+  position: fixed;
+}
+
+#newTaskText, #currentTaskText {
+  width: 200px;
+  border: none;
+  padding: 10px;
+  margin: 0 auto;
+  color: black;
+  font-size: 20px;
+  min-height: 130px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 0 5px #5E6472;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#newTaskText:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px #5E6472ca;
+}
+
+#currentTaskText {
+  width: 200px;
+  border: none;
+  padding: 10px;
+  margin: 0 auto;
+  color: black;
+  cursor: default;
+  font-size: 20px;
+  box-shadow: none;
+  min-height: 130px;
+  text-align: center;
+  border-radius: 20px;
+  pointer-events:none;
+  background-color: #bfb5af;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#primaryButtonIcon, #secondaryButtonIcon {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+#primaryButtonIcon svg, #primaryButton {
+  width: 40px;
+  fill: #d3d1cb;
+  border-radius: 100%;
+  background-color: #582C4D;
+  box-shadow: 0px 0px 0px 1px #582c4d;
+}
+
+#primaryButtonIcon svg:hover, #primaryButton:hover {
+  background-color: #582c4dca;
+  box-shadow: 0px 0px 0px 1px #582c4d;
+}
+
+#primaryButtonIcon svg:active, #primaryButton:active {
+  fill: #582c4d;
+  color: #582c4d;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 1px #582c4dca;
+}
+
+#secondaryButtonIcon svg, #secondaryButton {
+  width: 40px;
+  fill: #d3d1cb;
+  border-radius: 100%;
+  background-color: #5E6472;
+  box-shadow: 0px 0px 0px 1px #5E6472;
+}
+
+#secondaryButtonIcon svg:hover, #secondaryButton:hover {
+  background-color: #5E6472ca;
+  box-shadow: 0px 0px 0px 1px #5E6472ca;
+}
+
+#secondaryButtonIcon svg:active, #secondaryButton:active {
+  fill: #5E6472;
+  color: #5E6472;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 1px #5E6472;
+}
+
+#primaryButton, #secondaryButton {
+  border: none;
+  width: 100px;
+  height: 40px;
+  color: #d3d1cb;
+  font-weight: bold;
+  border-radius: 10px;
+}
