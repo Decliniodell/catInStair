@@ -1,55 +1,83 @@
-let toDos = [];
+let toDos = JSON.parse(localStorage.getItem("toDos")) ?? [];
+let currentTaskText = document.getElementById("currentTaskText");
 let currentOption = "";
+let currentTask = {};
+
+onload = initialChecks();
+
+function initialChecks() {
+  currentTask = toDos.find(task => task.active) ?? {}
+  if (!currentTask.task) return false;
+
+  currentTaskText.value = currentTask.task;
+  document.getElementById("screen1").style.visibility = "hidden";      
+  document.getElementById("screen2").style.visibility = "";
+}
 
 function addNewTask(newOption) {
-  if (document.getElementById("newTaskText").value === "") return false;
+  if (document.getElementById("newTaskText").value === "") {
+    if (
+      !currentTask.task ||
+      newOption === "addMore"
+    ) return false;
 
-  const input = document.getElementById("newTaskText");
+    currentTaskText.value = currentTask.task;
+    document.getElementById("screen1").style.visibility = "hidden";
+    document.getElementById("screen2").style.visibility = "";
+
+    return false;
+  }
+
+  const newTask = document.getElementById("newTaskText");
 
   toDos = [
     ...toDos,
     {
-      id: toDos.length + 1,
-      task: input.value,
+      index: toDos.length,
+      task: newTask.value,
       active: true
     }
   ]
 
-  input.value = "";
+  localStorage.setItem(
+    "toDos",
+    JSON.stringify(toDos)
+  );
+
+  currentTask = toDos.find(task => task.active);
+
+  newTask.value = "";
 
   if (newOption !== "addMore") {
-    if (currentOption === "notFinished") {
-      currentOption = "";
-    } else {
-      updateTasks();
-    }
+    updateTasks();
+
     document.getElementById("screen1").style.visibility = "hidden";      
     document.getElementById("screen2").style.visibility = "";
   }
 }
 
 function updateTasks(newOption) {
-  if (newOption) currentOption = newOption; 
-  let currentTaskText = document.getElementById("currentTaskText");
-  const taskActiveIndex = toDos.findIndex(task => task.active)
+  if (newOption === "addMore") {
+    document.getElementById("screen1").style.visibility = "";      
+    document.getElementById("screen2").style.visibility = "hidden";
 
-  if (!currentTaskText.value) {
-    currentTaskText.value = toDos[taskActiveIndex].task;
+    return false;
+  }
+
+  if (!currentTaskText.value && currentTask.task) {
+    currentTaskText.value = currentTask.task;
   } else {
-    if (newOption === "notFinished") {
+    toDos[currentTask.index].active = false;
+    localStorage.setItem("toDos", JSON.stringify(toDos));
+
+    if (toDos[currentTask.index + 1]) {
+      currentTaskText.value = toDos[currentTask.index + 1].task;
+      currentTask = toDos[currentTask.index + 1];
+    } else {
+      currentTaskText.value = "";
+      currentTask = {};
       document.getElementById("screen1").style.visibility = "";
       document.getElementById("screen2").style.visibility = "hidden";
-    } else {
-      toDos[taskActiveIndex].active = false;
-
-      if (toDos[taskActiveIndex + 1]) {
-        currentTaskText.value = toDos[taskActiveIndex + 1].task;
-      } else {
-        toDos = [];
-        currentTaskText.value = "";
-        document.getElementById("screen1").style.visibility = "";
-        document.getElementById("screen2").style.visibility = "hidden";
-      }           
     }
   }
 }

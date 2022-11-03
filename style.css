@@ -117,3 +117,11 @@ html, body {
   font-weight: bold;
   border-radius: 10px;
 }
+
+/* #topInputbuttons {
+  width: 100%;
+  top: 20px;
+  right: 20px;
+  direction: rtl;
+  position: fixed;
+} */
