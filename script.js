@@ -7,11 +7,13 @@ onload = initialChecks();
 
 function initialChecks() {
   currentTask = toDos.find(task => task.active) ?? {}
-  if (!currentTask.task) return false;
+  if (!currentTask.task) {
+    document.getElementById("screen1").style.transform = "translateX(0)";
+    return false
+  };
 
   currentTaskText.value = currentTask.task;
-  document.getElementById("screen1").style.visibility = "hidden";      
-  document.getElementById("screen2").style.visibility = "";
+  document.getElementById("screen2").style.transform = "translateX(0)";
 }
 
 function addNewTask(newOption) {
@@ -22,8 +24,8 @@ function addNewTask(newOption) {
     ) return false;
 
     currentTaskText.value = currentTask.task;
-    document.getElementById("screen1").style.visibility = "hidden";
-    document.getElementById("screen2").style.visibility = "";
+    document.getElementById("screen1").style.animation = "disappear 2s forwards";
+    document.getElementById("screen2").style.animation = "appear 1.5s forwards";
 
     return false;
   }
@@ -51,15 +53,15 @@ function addNewTask(newOption) {
   if (newOption !== "addMore") {
     updateTasks();
 
-    document.getElementById("screen1").style.visibility = "hidden";      
-    document.getElementById("screen2").style.visibility = "";
+    document.getElementById("screen1").style.animation = "disappear 2s forwards";
+    document.getElementById("screen2").style.animation = "appear 1.5s forwards";
   }
 }
 
 function updateTasks(newOption) {
   if (newOption === "addMore") {
-    document.getElementById("screen1").style.visibility = "";      
-    document.getElementById("screen2").style.visibility = "hidden";
+    document.getElementById("screen1").style.animation = "appear 1.5s forwards";
+    document.getElementById("screen2").style.animation = "disappear 2s forwards";
 
     return false;
   }
@@ -76,8 +78,8 @@ function updateTasks(newOption) {
     } else {
       currentTaskText.value = "";
       currentTask = {};
-      document.getElementById("screen1").style.visibility = "";
-      document.getElementById("screen2").style.visibility = "hidden";
+      document.getElementById("screen1").style.animation = "appear 1.5s forwards";
+      document.getElementById("screen2").style.animation = "disappear 2s forwards";
     }
   }
 }

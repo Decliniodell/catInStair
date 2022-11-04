@@ -6,6 +6,7 @@ html, body {
 
 #screen1, #screen2 {
   width: 100%;
+  transform: translateX(-100%);
   height: 100%;
   display: grid;
   position: absolute;
@@ -23,7 +24,7 @@ html, body {
 #bottomInputbuttons {
   width: 100%;
   bottom: 40px;
-  position: fixed;
+  position: absolute;
 }
 
 #newTaskText, #currentTaskText {
@@ -116,6 +117,47 @@ html, body {
   color: #d3d1cb;
   font-weight: bold;
   border-radius: 10px;
+}
+
+@keyframes appear {
+  0% {
+    transform:
+      translateX(-100%)
+      rotateZ(0deg);
+  }
+  50% {
+    transform:
+      translateX(50%)
+      rotateZ(45deg);
+  }
+  70% {
+    transform:
+      translateX(-20%)
+      rotateZ(-15deg);
+  }
+  100% {
+    transform:
+      translateX(0)
+      rotateZ(0);
+  }
+}
+
+@keyframes disappear {
+  0% {
+    transform:
+      translateX(0)
+      rotateZ(0);
+  }
+  50% {
+    transform:
+      translateX(-100%)
+      rotateZ(45deg);
+  }
+  100% {
+    transform:
+      translateX(-100%)
+      rotateZ(0);
+  }
 }
 
 /* #topInputbuttons {
