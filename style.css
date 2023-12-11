@@ -1,16 +1,60 @@
 html, body {
   margin: 0px;
   overflow: hidden;
-  background-color: #d3d1cb;
+  background-color: #b6b5af;
 }
+
+/* body {
+  padding: 0 10px 0 10px;
+  border: 1px solid green;
+} */
 
 #screen1, #screen2 {
   width: 100%;
-  transform: translateX(-100%);
   height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100%);
+}
+
+#sphere {
+  width: 60vh;
+  height: 60vh;
+  position: absolute;
+  background: #c5c2b6;
+  border-radius: 0 0 100%;
+}
+
+#paper {
+  background-color: rgba(212, 210, 204, 0.8);
+  box-shadow: 10px 10px 20px 1px #8b8a87;
+  border-radius: 20px;
+  max-height: 720px;
+  max-width: 360px;
+  width: 90%;
+  height: 90%;
   display: grid;
   position: absolute;
+  overflow: hidden;
   align-content: center;
+  justify-content: center;
+}
+
+#title {
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  position: absolute;
+  top: 0px;
+  font-size: 20px;
+  color: white;
+  background-color: #5d8aa8;
+  font-family: Arial, Helvetica, sans-serif;
+  /* box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5); */
 }
 
 #inputbuttons, #bottomInputbuttons {
@@ -32,19 +76,25 @@ html, body {
   border: none;
   padding: 10px;
   margin: 0 auto;
-  color: black;
+  color: white;
   font-size: 20px;
   min-height: 130px;
   text-align: center;
   border-radius: 20px;
-  background-color: transparent;
-  box-shadow: 0 0 0 5px #5E6472;
+  transition-duration: 0.5s;
+  background-color: #5d8aa8;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#newTaskText::placeholder, #currentTaskText::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 #newTaskText:focus {
   outline: none;
-  box-shadow: 0 0 0 5px #5E6472ca;
+  background-color: #054f77;
+  box-shadow: 0 0 2px 10px #f5f5f5;
 }
 
 #currentTaskText {
@@ -72,22 +122,24 @@ html, body {
 
 #primaryButtonIcon svg, #primaryButton {
   width: 40px;
-  fill: #d3d1cb;
+  fill: rgba(255, 255, 255, 0.5);
   border-radius: 100%;
-  background-color: #582C4D;
-  box-shadow: 0px 0px 0px 1px #582c4d;
+  background-color: #5d8aa8;
+  transition-duration: 0.2s;
+  box-shadow: 0px 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
 #primaryButtonIcon svg:hover, #primaryButton:hover {
-  background-color: #582c4dca;
-  box-shadow: 0px 0px 0px 1px #582c4d;
+  fill: #f5f5f5;
+  background-color: #054f77;
+  box-shadow: 0px 0px 0px 6px #f5f5f5;
 }
 
 #primaryButtonIcon svg:active, #primaryButton:active {
-  fill: #582c4d;
-  color: #582c4d;
+  fill: #054f77;
+  color: #054f77;
   background-color: transparent;
-  box-shadow: 0px 0px 0px 1px #582c4dca;
+  box-shadow: 0px 0px 0px 3px #054f77;
 }
 
 #secondaryButtonIcon svg, #secondaryButton {
@@ -123,22 +175,10 @@ html, body {
   0% {
     transform:
       translateX(-100%)
-      rotateZ(0deg);
-  }
-  50% {
-    transform:
-      translateX(50%)
-      rotateZ(45deg);
-  }
-  70% {
-    transform:
-      translateX(-20%)
-      rotateZ(-15deg);
   }
   100% {
     transform:
       translateX(0)
-      rotateZ(0);
   }
 }
 
@@ -146,17 +186,10 @@ html, body {
   0% {
     transform:
       translateX(0)
-      rotateZ(0);
-  }
-  50% {
-    transform:
-      translateX(-100%)
-      rotateZ(45deg);
   }
   100% {
     transform:
-      translateX(-100%)
-      rotateZ(0);
+      translateX(100%)
   }
 }
 

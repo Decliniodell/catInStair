@@ -53,15 +53,15 @@ function addNewTask(newOption) {
   if (newOption !== "addMore") {
     updateTasks();
 
-    document.getElementById("screen1").style.animation = "disappear 2s forwards";
-    document.getElementById("screen2").style.animation = "appear 1.5s forwards";
+    document.getElementById("screen1").style.animation = "disappear 1s forwards";
+    document.getElementById("screen2").style.animation = "appear 1s forwards";
   }
 }
 
 function updateTasks(newOption) {
   if (newOption === "addMore") {
-    document.getElementById("screen1").style.animation = "appear 1.5s forwards";
-    document.getElementById("screen2").style.animation = "disappear 2s forwards";
+    document.getElementById("screen1").style.animation = "appear 1s forwards";
+    document.getElementById("screen2").style.animation = "disappear 1s forwards";
 
     return false;
   }
@@ -78,8 +78,8 @@ function updateTasks(newOption) {
     } else {
       currentTaskText.value = "";
       currentTask = {};
-      document.getElementById("screen1").style.animation = "appear 1.5s forwards";
-      document.getElementById("screen2").style.animation = "disappear 2s forwards";
+      document.getElementById("screen1").style.animation = "appear 1s forwards";
+      document.getElementById("screen2").style.animation = "disappear 1s forwards";
     }
   }
 }
